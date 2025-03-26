@@ -1,0 +1,11 @@
+/home/chouaibtech5/NetBaines/mavenproject2/src/main/java/com/mycompany/mavenproject2/Mavenproject2.java
+/home/chouaibtech5/NetBaines/mavenproject2/src/main/java/gui/EditPatient.java
+/home/chouaibtech5/NetBaines/mavenproject2/src/main/java/gui/HospitalInformation.java
+/home/chouaibtech5/NetBaines/mavenproject2/src/main/java/gui/HospitalRecordManager.java
+/home/chouaibtech5/NetBaines/mavenproject2/src/main/java/gui/NewPatient.java
+/home/chouaibtech5/NetBaines/mavenproject2/src/main/java/models/EmergencyPatient.java
+/home/chouaibtech5/NetBaines/mavenproject2/src/main/java/models/Hospital.java
+/home/chouaibtech5/NetBaines/mavenproject2/src/main/java/models/HospitalBlock.java
+/home/chouaibtech5/NetBaines/mavenproject2/src/main/java/models/Inpatient.java
+/home/chouaibtech5/NetBaines/mavenproject2/src/main/java/models/Outpatient.java
+/home/chouaibtech5/NetBaines/mavenproject2/src/main/java/models/Patient.java
