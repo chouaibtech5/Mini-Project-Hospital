@@ -6,10 +6,10 @@ public class Inpatient extends Patient {
     private double dailyCharge;
     private int numberOfDaysAdmitted;
 
-    public Inpatient(String name, int age, String gender, String condition, 
+    public Inpatient(String name, int age, String gender, 
                    HospitalBlock location, String roomNumber, 
                    String admissionDate, double dailyCharge, int numberOfDaysAdmitted) {
-        super(name, age, gender, condition, location);
+        super(name, age, gender, location);
         this.roomNumber = roomNumber;
         this.admissionDate = admissionDate;
         this.dailyCharge = dailyCharge;

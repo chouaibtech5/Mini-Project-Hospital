@@ -3,10 +3,11 @@ package models;
 public class EmergencyPatient extends Patient {
     private String severityLevel;
     private double emergencyTreatmentCost;
+    private double AdditionalCharges ; 
 
-    public EmergencyPatient(String name, int age, String gender, String condition,
-                          HospitalBlock location, String severityLevel, double emergencyTreatmentCost) {
-        super(name, age, gender, condition, location);
+    public EmergencyPatient(String name, int age, String gender, 
+                          HospitalBlock location, String severityLevel, double emergencyTreatmentCost , double AdditionalCharges ) {
+        super(name, age, gender, location);
         this.severityLevel = severityLevel;
         this.emergencyTreatmentCost = emergencyTreatmentCost;
     }
@@ -19,6 +20,6 @@ public class EmergencyPatient extends Patient {
 
     @Override
     public double calculateBill() {
-        return emergencyTreatmentCost;
+        return emergencyTreatmentCost + AdditionalCharges ;  
     }
 }

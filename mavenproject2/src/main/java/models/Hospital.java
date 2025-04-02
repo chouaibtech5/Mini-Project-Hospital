@@ -36,4 +36,10 @@ public class Hospital {
     public String getState() {
         return state;
     }
+      public void setState(String state) {
+        this.state = state;
+    }
+       public void setMaxPatients(int maxPatients) {
+        this.maxPatients = maxPatients;
+    }   
 }

@@ -16,18 +16,8 @@ public class Mavenproject2 {
         
         // Create patients with correct parameters
         Inpatient inpatient = new Inpatient(
-            "Alice Smith", 50, "Female", "Fever", cardioBlock, 
-            "A101", "2025-05-01", 300.0, 3
+            "Alice Smith", 50, "F", cardioBlock , "A22" , "13-02-2024" , 23 , 34 
         );
-        
-        Outpatient outpatient = new Outpatient(
-            "Bob Johnson", 35, "Male", "Checkup", pediatricBlock,
-            "2025-05-02", 120.0
-        );
-        
-        EmergencyPatient emergencyPatient = new EmergencyPatient(
-            "Chris Lee", 27, "Male", "Accident", pediatricBlock,
-            "High", 700.0
-        );
+       
     }
 }

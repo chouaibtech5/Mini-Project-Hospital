@@ -20,6 +20,7 @@ public class NewPatient extends javax.swing.JFrame {
     public NewPatient(HospitalRecordManager hospitalRecordManager) {
         initComponents();
         this.hospitalRecordManager = hospitalRecordManager;
+        initBlockComboBox() ; 
         
         // Initialize text area for condition
         
@@ -40,6 +41,15 @@ public class NewPatient extends javax.swing.JFrame {
         
         pack();
     }
+    private void initBlockComboBox() {
+    Hospital hospital = HospitalRecordManager.getCurrentHospital();
+    if (hospital != null) {
+        jComboBox3.removeAllItems();
+        for (HospitalBlock block : hospital.getBlocks()) {
+            jComboBox3.addItem(block.getBlockName());
+        }
+    }
+}
 
     private void clearFields() {
         txtPatientName.setText("");
@@ -72,6 +82,16 @@ public class NewPatient extends javax.swing.JFrame {
         jCheckBox2 = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
         jButton5 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        txtDays = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        txtDailyRate = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        txtConsultationFee = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        txtEmergencyFee = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        txtAdditionalCharges = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -137,44 +157,108 @@ public class NewPatient extends javax.swing.JFrame {
             }
         });
 
+        jLabel12.setText("Days (Inp) :");
+
+        txtDays.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDaysActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setText("Daily rate :(Inp) :");
+
+        txtDailyRate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDailyRateActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setText("Consultation fee (out):");
+
+        txtConsultationFee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtConsultationFeeActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setText("emergency fee(eme) :");
+
+        txtEmergencyFee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmergencyFeeActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setText("Additional Charges(eme) :");
+
+        txtAdditionalCharges.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAdditionalChargesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel11)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel9)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel10)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtPatientAge, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jCheckBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel11)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtPatientAge, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(28, 28, 28)
+                                            .addComponent(jLabel8)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtPatientName, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel1))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel13)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtDailyRate, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel12)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtDays, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel14)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtConsultationFee, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel15)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtEmergencyFee, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(jLabel8)
+                                .addComponent(jLabel16)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtPatientName, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1))))
-                .addContainerGap(32, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                                .addComponent(txtAdditionalCharges, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,14 +281,34 @@ public class NewPatient extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCheckBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtDays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(txtDailyRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(txtConsultationFee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(txtEmergencyFee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(txtAdditionalCharges, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -215,7 +319,7 @@ public class NewPatient extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
@@ -236,8 +340,13 @@ public class NewPatient extends javax.swing.JFrame {
         String name = txtPatientName.getText();
         int age = Integer.parseInt(txtPatientAge.getText());
         String gender = jComboBox2.getSelectedItem().toString();
-        String condition = txtPatientCondition.getText();
         String blockName = jComboBox3.getSelectedItem().toString();
+//        String daysText = txtDays.getText().trim();
+//        String dailyRateText = txtDailyRate.getText().trim();
+//        String consultationFeeText = txtConsultationFee.getText().trim();
+//        String emergencyFeeText = txtEmergencyFee.getText().trim();
+//        String additionalChargesText = txtAdditionalCharges.getText().trim();
+
         
         // Get current hospital
         Hospital hospital = HospitalRecordManager.getCurrentHospital();
@@ -262,22 +371,47 @@ public class NewPatient extends javax.swing.JFrame {
         
         // Create appropriate patient type
         Patient newPatient;
+         double totalBill = 0; 
         if (jCheckBox1.isSelected()) { // Inpatient
-            newPatient = new Inpatient(name, age, gender, condition, selectedBlock, 
-                                     "RM-101", "2023-01-01", 150.0, 3);
+             int dailyCharge = Integer.parseInt(txtDays.getText());
+            double numberOfDaysAdmitted = Double.parseDouble(txtDailyRate.getText());
+            Inpatient inpatient = new Inpatient(name, age, gender, 
+                selectedBlock, "RM-101", "2023-01-01", dailyCharge, (int) numberOfDaysAdmitted);
+            totalBill = inpatient.calculateBill();
+            newPatient = inpatient;
         } 
         else if (jCheckBox2.isSelected()) { // Outpatient
-            newPatient = new Outpatient(name, age, gender, condition, selectedBlock,
-                                      "2023-01-01", 75.0);
+             double consultationFee = Double.parseDouble(txtConsultationFee.getText());
+            
+            Outpatient outpatient = new Outpatient(name, age, gender, 
+                selectedBlock, "2023-01-01", consultationFee);
+            totalBill = outpatient.calculateBill();
+            newPatient = outpatient;
         } 
         else if (jCheckBox3.isSelected()) { // Emergency
-            newPatient = new EmergencyPatient(name, age, gender, condition, selectedBlock,
-                                            "High", 300.0);
+             double emergencyFee = Double.parseDouble(txtEmergencyFee.getText());
+            double additionalCharges = Double.parseDouble(txtAdditionalCharges.getText());
+            
+            EmergencyPatient emergencyPatient = new EmergencyPatient(name, age, gender, selectedBlock ,"RM-101"  ,emergencyFee, additionalCharges);
+            totalBill = emergencyPatient.calculateBill();
+            newPatient = emergencyPatient;
         } 
         else {
             JOptionPane.showMessageDialog(this, "Select patient type!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+           if (!jCheckBox1.isSelected()) {
+        txtDays.setText("");
+        txtDailyRate.setText("");
+    }
+    if (!jCheckBox2.isSelected()) {
+        txtConsultationFee.setText("");
+    }
+    if (!jCheckBox3.isSelected()) {
+        txtEmergencyFee.setText("");
+        txtAdditionalCharges.setText("");
+    }
+
         
         // Add patient to system
         HospitalRecordManager.addPatient(newPatient);
@@ -292,6 +426,26 @@ public class NewPatient extends javax.swing.JFrame {
     private void txtPatientAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientAgeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPatientAgeActionPerformed
+
+    private void txtDaysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDaysActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDaysActionPerformed
+
+    private void txtDailyRateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDailyRateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDailyRateActionPerformed
+
+    private void txtConsultationFeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConsultationFeeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtConsultationFeeActionPerformed
+
+    private void txtEmergencyFeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmergencyFeeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmergencyFeeActionPerformed
+
+    private void txtAdditionalChargesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAdditionalChargesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAdditionalChargesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,8 +494,18 @@ public class NewPatient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField txtAdditionalCharges;
+    private javax.swing.JTextField txtConsultationFee;
+    private javax.swing.JTextField txtDailyRate;
+    private javax.swing.JTextField txtDays;
+    private javax.swing.JTextField txtEmergencyFee;
     private javax.swing.JTextField txtPatientAge;
     private javax.swing.JTextField txtPatientName;
     // End of variables declaration//GEN-END:variables

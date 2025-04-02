@@ -7,18 +7,26 @@ import javax.swing.table.DefaultTableModel;
 public class HospitalInformation extends javax.swing.JFrame {
     private Hospital hospital;
     private DefaultTableModel tableModel;
+   
 
     public HospitalInformation() {
         initComponents();
         setupTable();
+       loadExistingHospitalData(); // Add this
+
     }
 
     private void setupTable() {
-        tableModel = new DefaultTableModel(
-            new Object[][]{}, 
-            new String[]{"Block Name", "Floor", "Specialty"}
-        );
-        jTable1.setModel(tableModel);
+         tableModel = new DefaultTableModel(
+        new Object[][]{}, 
+        new String[]{"Block Name", "Floor", "Specialty"}
+    ) {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false; // Make table non-editable
+        }
+    };
+    jTable1.setModel(tableModel);
     }
 
     /**
@@ -320,9 +328,24 @@ public class HospitalInformation extends javax.swing.JFrame {
             return;
         }
         
-        // Create and set the new hospital
-        Hospital newHospital = new Hospital(name, maxPatients, state);
-        HospitalRecordManager.setCurrentHospital(newHospital);
+        Hospital current = HospitalRecordManager.getCurrentHospital();
+        if (current == null || !current.getName().equals(name)) {
+            // New hospital or name changed
+            Hospital newHospital = new Hospital(name, maxPatients, state);
+            
+            // Transfer blocks if this is an update
+            if (current != null) {
+                for (HospitalBlock block : current.getBlocks()) {
+                    newHospital.addBlock(block);
+                }
+            }
+            
+            HospitalRecordManager.setCurrentHospital(newHospital);
+        } else {
+            // Just update properties
+            current.setMaxPatients(maxPatients);
+            current.setState(state);
+        }
         
         JOptionPane.showMessageDialog(this, 
             "Hospital saved successfully!\n" +
@@ -340,6 +363,7 @@ public class HospitalInformation extends javax.swing.JFrame {
             "Error", 
             JOptionPane.ERROR_MESSAGE);
     }
+   
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -354,6 +378,20 @@ public class HospitalInformation extends javax.swing.JFrame {
         jTextField4.setText("");
         jComboBox2.setSelectedIndex(0);
     }
+    private void loadExistingHospitalData() {
+    Hospital current = HospitalRecordManager.getCurrentHospital();
+    if (current != null) {
+        txtHospitalName.setText(current.getName());
+        txtHospitalLocation.setText(current.getState());
+        jComboBox1.setSelectedItem(String.valueOf(current.getMaxPatients()));
+        
+        // Load blocks into table
+        for (HospitalBlock block : current.getBlocks()) {
+            tableModel.addRow(new Object[]{block.getBlockName(), block.getFloorNumber(), block.getSpecialty()});
+        }
+    }
+}
+
     /**
      * @param args the command line arguments
      */

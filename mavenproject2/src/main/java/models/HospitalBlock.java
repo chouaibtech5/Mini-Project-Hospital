@@ -14,4 +14,10 @@ public class HospitalBlock {
     public String getBlockName() {
         return blockName;
     }
+    public int getFloorNumber(){
+        return floorNumber ; 
+    }
+    public String getSpecialty(){
+        return specialty ;
+    }
 }

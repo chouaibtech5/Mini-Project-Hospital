@@ -4,9 +4,9 @@ public class Outpatient extends Patient {
     private String appointmentDate;
     private double consultationFee;
 
-    public Outpatient(String name, int age, String gender, String condition,
+    public Outpatient(String name, int age, String gender,
                      HospitalBlock location, String appointmentDate, double consultationFee) {
-        super(name, age, gender, condition, location);
+        super(name, age, gender, location  );
         this.appointmentDate = appointmentDate;
         this.consultationFee = consultationFee;
     }
