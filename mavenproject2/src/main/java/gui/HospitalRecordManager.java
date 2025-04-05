@@ -167,8 +167,9 @@ private Hospital createDefaultHospital() {
         jComboBox2.addItem("Inpatient");
         jComboBox2.addItem("Outpatient");
         jComboBox2.addItem("Emergency");
-        
+      
         // Add hospital blocks
+       
         jComboBox1.addItem("All");
         Hospital  blocksint = HospitalRecordManager.getCurrentHospital();
         if (blocksint != null) {
@@ -386,6 +387,12 @@ newPatientWindow.setVisible(true);
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
      HospitalInformation hospitalInfo = new HospitalInformation();
      hospitalInfo.setVisible(true);
+     hospitalInfo.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent e) {
+                setupFilters();
+            }
+        });
      
     }//GEN-LAST:event_jButton2ActionPerformed
 

@@ -18,6 +18,6 @@ public class Mavenproject2 {
         Inpatient inpatient = new Inpatient(
             "Alice Smith", 50, "F", cardioBlock , "A22" , "13-02-2024" , 23 , 34 
         );
-       
+        
     }
 }

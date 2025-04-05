@@ -21,6 +21,7 @@ public class Hospital {
     }
 
     public ArrayList<HospitalBlock> getBlocks() {
+        System.out.println(blocks);
         return blocks;
     }
 

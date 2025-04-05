@@ -38,6 +38,7 @@ gui/HospitalRecordManager$6.class
 gui/EditPatient.class
 gui/HospitalInformation.class
 gui/NewPatient$2.class
+gui/HospitalRecordManager$10.class
 gui/NewPatient$3.class
 gui/NewPatient$10.class
 gui/HospitalInformation$7.class
