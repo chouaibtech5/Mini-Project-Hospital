@@ -206,6 +206,8 @@ private Hospital createDefaultHospital() {
         btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAutoRequestFocus(false);
+        setBackground(new java.awt.Color(255, 255, 0));
 
         jLabel1.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
         jLabel1.setText("Hospital Patient Record System");
@@ -270,7 +272,6 @@ private Hospital createDefaultHospital() {
         });
 
         jButton4.setText("Show filter result ");
-        jButton4.setActionCommand("Show filter result ");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);

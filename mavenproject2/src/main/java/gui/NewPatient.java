@@ -29,7 +29,6 @@ public class NewPatient extends javax.swing.JFrame {
         txtPatientCondition.setWrapStyleWord(true);
         JScrollPane scrollPane = new JScrollPane(txtPatientCondition);
         getContentPane().add(scrollPane);
-        
         // Initialize checkboxes
         chkInpatient = jCheckBox1;
         chkOutpatient = jCheckBox2;
@@ -69,6 +68,7 @@ public class NewPatient extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtPatientName = new javax.swing.JTextField();
@@ -126,6 +126,7 @@ public class NewPatient extends javax.swing.JFrame {
 
         jLabel11.setText("Block Location  :");
 
+        buttonGroup1.add(jCheckBox1);
         jCheckBox1.setFont(new java.awt.Font("Cantarell", 0, 18)); // NOI18N
         jCheckBox1.setText("Inpatient");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -134,6 +135,7 @@ public class NewPatient extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(jCheckBox2);
         jCheckBox2.setFont(new java.awt.Font("Cantarell", 0, 18)); // NOI18N
         jCheckBox2.setText("Outpatient");
         jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +144,7 @@ public class NewPatient extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(jCheckBox3);
         jCheckBox3.setFont(new java.awt.Font("Cantarell", 0, 18)); // NOI18N
         jCheckBox3.setText("Emergency");
         jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
@@ -324,14 +327,34 @@ public class NewPatient extends javax.swing.JFrame {
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
+         txtAdditionalCharges.setVisible(false);
+          txtConsultationFee.setVisible(false);
+          txtDays.setVisible(true);
+          txtDailyRate.setVisible(true);
+          txtEmergencyFee.setVisible(false);
+           
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
         // TODO add your handling code here:
+        
+         txtAdditionalCharges.setVisible(false);
+          txtConsultationFee.setVisible(true);
+          txtDays.setVisible(false);
+          txtDailyRate.setVisible(false);
+          txtEmergencyFee.setVisible(false);
+          
+        
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
         // TODO add your handling code here:
+           txtAdditionalCharges.setVisible(true);
+          txtConsultationFee.setVisible(false);
+          txtDays.setVisible(false);
+          txtDailyRate.setVisible(false);
+          txtEmergencyFee.setVisible(true);
+        
     }//GEN-LAST:event_jCheckBox3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -373,14 +396,17 @@ public class NewPatient extends javax.swing.JFrame {
         Patient newPatient;
          double totalBill = 0; 
         if (jCheckBox1.isSelected()) { // Inpatient
+              
              int dailyCharge = Integer.parseInt(txtDays.getText());
             double numberOfDaysAdmitted = Double.parseDouble(txtDailyRate.getText());
             Inpatient inpatient = new Inpatient(name, age, gender, 
                 selectedBlock, "RM-101", "2023-01-01", dailyCharge, (int) numberOfDaysAdmitted);
             totalBill = inpatient.calculateBill();
             newPatient = inpatient;
+            
         } 
         else if (jCheckBox2.isSelected()) { // Outpatient
+        
              double consultationFee = Double.parseDouble(txtConsultationFee.getText());
             
             Outpatient outpatient = new Outpatient(name, age, gender, 
@@ -401,8 +427,10 @@ public class NewPatient extends javax.swing.JFrame {
             return;
         }
            if (!jCheckBox1.isSelected()) {
+        
         txtDays.setText("");
         txtDailyRate.setText("");
+        
     }
     if (!jCheckBox2.isSelected()) {
         txtConsultationFee.setText("");
@@ -479,12 +507,13 @@ public class NewPatient extends javax.swing.JFrame {
             public void run() {
                HospitalRecordManager hrm = new HospitalRecordManager();
                 new NewPatient(hrm).setVisible(true);
-
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton5;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
